@@ -1,0 +1,66 @@
+DOCTRINE = docker compose run --rm php php doctrine-orm.php
+MIGRATIONS = docker compose run --rm php vendor/bin/doctrine-migrations
+
+.PHONY: up down build restart logs shell install ps db \
+        doctrine-validate doctrine-schema-create doctrine-schema-update doctrine-schema-drop \
+        migration-diff migration-migrate migration-status migration-rollback
+
+# ── Docker ────────────────────────────────────────────────────────────────────
+
+up:
+	docker compose up -d
+
+down:
+	docker compose down
+
+build:
+	docker compose build --no-cache
+
+restart:
+	docker compose restart
+
+install:
+	docker compose run --rm php composer install
+
+logs:
+	docker compose logs -f
+
+ps:
+	docker compose ps
+
+shell:
+	docker compose exec php bash
+
+db:
+	docker compose exec mysql mysql -u zf1_user -pzf1_pass zf1_app
+
+kill:
+	docker kill $$(docker ps -q)
+
+# ── Doctrine ORM ──────────────────────────────────────────────────────────────
+
+doctrine-validate:
+	$(DOCTRINE) orm:validate-schema
+
+doctrine-schema-create:
+	$(DOCTRINE) orm:schema-tool:create
+
+doctrine-schema-update:
+	$(DOCTRINE) orm:schema-tool:update --force
+
+doctrine-schema-drop:
+	$(DOCTRINE) orm:schema-tool:drop --force
+
+# ── Migrations ────────────────────────────────────────────────────────────────
+
+migration-diff:
+	$(MIGRATIONS) diff
+
+migration-migrate:
+	$(MIGRATIONS) migrate --no-interaction
+
+migration-status:
+	$(MIGRATIONS) status
+
+migration-rollback:
+	$(MIGRATIONS) rollback latest
