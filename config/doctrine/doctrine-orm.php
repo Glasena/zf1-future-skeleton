@@ -3,10 +3,10 @@
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 
-define('APPLICATION_PATH', __DIR__ . '/application');
+define('APPLICATION_PATH', __DIR__ . '/../../application');
 define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 $application = new Zend_Application(
     APPLICATION_ENV,

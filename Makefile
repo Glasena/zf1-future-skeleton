@@ -1,5 +1,5 @@
-DOCTRINE = docker compose run --rm php php doctrine-orm.php
-MIGRATIONS = docker compose run --rm php vendor/bin/doctrine-migrations
+DOCTRINE = docker compose run --rm php php config/doctrine/doctrine-orm.php
+MIGRATIONS = docker compose run --rm php vendor/bin/doctrine-migrations --configuration=config/doctrine/cli-config.php
 
 .PHONY: up down build restart logs shell install ps db \
         doctrine-validate doctrine-schema-create doctrine-schema-update doctrine-schema-drop \

@@ -9,7 +9,7 @@ return [
         'execution_time_column_name' => 'execution_time',
     ],
     'migrations_paths' => [
-        'Database\\Migrations' => __DIR__ . '/database/migrations',
+        'Database\\Migrations' => __DIR__ . '/../../database/migrations',
     ],
     'all_or_nothing'            => true,
     'transactional'             => true,
