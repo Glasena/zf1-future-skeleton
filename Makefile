@@ -33,10 +33,10 @@ shell:
 	docker compose exec php bash
 
 db:
-	docker compose exec mysql mysql -u zf1_user -pzf1_pass zf1_app
+	docker compose exec mysql bash -c 'mysql -u $$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE'
 
 kill:
-	docker kill $$(docker ps -q)
+	docker compose kill
 
 # ── Tests ─────────────────────────────────────────────────────────────────────
 

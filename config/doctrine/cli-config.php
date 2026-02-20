@@ -4,6 +4,8 @@ use Doctrine\Migrations\Configuration\EntityManager\ExistingEntityManager;
 use Doctrine\Migrations\Configuration\Migration\PhpFile;
 use Doctrine\Migrations\DependencyFactory;
 
+require_once __DIR__ . '/../load-env.php';
+
 define('APPLICATION_PATH', __DIR__ . '/../../application');
 define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 

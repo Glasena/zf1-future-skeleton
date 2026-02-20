@@ -15,7 +15,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $view = $this->getResource('view');
         $view->setEncoding('UTF-8');
         $view->doctype('HTML5');
-        $view->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8');
+        $view->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8', []);
 
         return $view;
     }
@@ -30,7 +30,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             : new FilesystemAdapter('doctrine_meta', 0, APPLICATION_PATH . '/../data/doctrine/cache');
 
         $config = ORMSetup::createAttributeMetadataConfiguration(
-            paths: [APPLICATION_PATH . '/entities'],
+            paths: glob(APPLICATION_PATH . '/modules/*/entities', GLOB_ONLYDIR) ?: [],
             isDevMode: $isDev,
             proxyDir: $options['proxies_dir'],
             cache: $metadataCache,
@@ -41,12 +41,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         $connection = DriverManager::getConnection([
             'driver'   => $options['conn']['driver'],
-            'host'     => $options['conn']['host'],
-            'port'     => (int) $options['conn']['port'],
-            'user'     => $options['conn']['user'],
-            'password' => $options['conn']['password'],
-            'dbname'   => $options['conn']['dbname'],
-            'charset'  => $options['conn']['charset'],
+            'host'     => getenv('DB_HOST'),
+            'port'     => (int) getenv('DB_PORT'),
+            'user'     => getenv('DB_USER'),
+            'password' => getenv('DB_PASS'),
+            'dbname'   => getenv('DB_NAME'),
+            'charset'  => getenv('DB_CHARSET'),
         ], $config);
 
         $em = new EntityManager($connection, $config);

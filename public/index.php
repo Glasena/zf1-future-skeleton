@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../config/load-env.php';
+
 define('APPLICATION_PATH', realpath(__DIR__ . '/../application'));
 define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'production');
 
