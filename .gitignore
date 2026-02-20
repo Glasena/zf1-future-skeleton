@@ -3,5 +3,7 @@ vendor/
 *.log
 .DS_Store
 data/doctrine/cache/*
+!data/doctrine/cache/.gitkeep
 data/doctrine/proxies/*
+!data/doctrine/proxies/.gitkeep
 .phpunit.result.cache
