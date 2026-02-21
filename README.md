@@ -9,16 +9,16 @@ A modern PHP 8.1+ application skeleton built on top of [ZF1-Future](https://gith
 
 ## Stack
 
-| Layer       | Technology                   |
-|-------------|------------------------------|
-| Language    | PHP 8.1+                     |
-| Framework   | ZF1-Future ^1.23             |
-| ORM         | Doctrine ORM ^2.17           |
-| Migrations  | Doctrine Migrations ^3.7     |
-| Database    | MySQL 8.0                    |
-| Web Server  | Nginx 1.25                   |
-| Testing     | PHPUnit ^10.0                |
-| Debugging   | Xdebug (VS Code ready)       |
+| Layer      | Technology               |
+| ---------- | ------------------------ |
+| Language   | PHP 8.1+                 |
+| Framework  | ZF1-Future ^1.23         |
+| ORM        | Doctrine ORM ^2.17       |
+| Migrations | Doctrine Migrations ^3.7 |
+| Database   | MySQL 8.0                |
+| Web Server | Nginx 1.25               |
+| Testing    | PHPUnit ^10.0            |
+| Debugging  | Xdebug (VS Code ready)   |
 
 ## Getting Started
 
@@ -73,30 +73,30 @@ The application will be available at [http://localhost:8080](http://localhost:80
 
 ### Docker
 
-| Command           | Description                         |
-|-------------------|-------------------------------------|
-| `make up`         | Start containers                    |
-| `make down`       | Stop containers                     |
-| `make build`      | Rebuild containers (no cache)       |
-| `make restart`    | Restart all services                |
-| `make install`    | Run `composer install` in container |
-| `make shell`      | Open a bash shell in PHP container  |
-| `make db`         | Open MySQL CLI                      |
-| `make logs`       | Follow container logs               |
-| `make ps`         | List running services               |
+| Command        | Description                         |
+| -------------- | ----------------------------------- |
+| `make up`      | Start containers                    |
+| `make down`    | Stop containers                     |
+| `make build`   | Rebuild containers (no cache)       |
+| `make restart` | Restart all services                |
+| `make install` | Run `composer install` in container |
+| `make shell`   | Open a bash shell in PHP container  |
+| `make db`      | Open MySQL CLI                      |
+| `make logs`    | Follow container logs               |
+| `make ps`      | List running services               |
 
 ### Testing
 
-| Command                  | Description                  |
-|--------------------------|------------------------------|
-| `make test`              | Run all test suites          |
-| `make test-unit`         | Run Unit tests only          |
-| `make test-integration`  | Run Integration tests only   |
+| Command                 | Description                |
+| ----------------------- | -------------------------- |
+| `make test`             | Run all test suites        |
+| `make test-unit`        | Run Unit tests only        |
+| `make test-integration` | Run Integration tests only |
 
 ### Doctrine Schema
 
 | Command                       | Description             |
-|-------------------------------|-------------------------|
+| ----------------------------- | ----------------------- |
 | `make doctrine-validate`      | Validate entity mapping |
 | `make doctrine-schema-create` | Create database schema  |
 | `make doctrine-schema-update` | Update schema (force)   |
@@ -104,32 +104,32 @@ The application will be available at [http://localhost:8080](http://localhost:80
 
 ### Migrations
 
-| Command                    | Description                     |
-|----------------------------|---------------------------------|
-| `make migration-diff`      | Generate a new migration diff   |
-| `make migration-migrate`   | Run pending migrations          |
-| `make migration-status`    | Show migration status           |
-| `make migration-rollback`  | Rollback the latest migration   |
+| Command                   | Description                   |
+| ------------------------- | ----------------------------- |
+| `make migration-diff`     | Generate a new migration diff |
+| `make migration-migrate`  | Run pending migrations        |
+| `make migration-status`   | Show migration status         |
+| `make migration-rollback` | Rollback the latest migration |
 
 ## Adding a New Module
 
 1. Create the module directory under `application/modules/<module-name>/`
-2. Add `controllers/`, `models/`, `views/`, and `entities/` subdirectories
+2. Add `controllers/`, `services/`, `views/`, and `entities/` subdirectories
 3. Create a `Bootstrap.php` extending `Zend_Application_Module_Bootstrap`
 4. Doctrine will auto-discover entities in `*/entities` paths
 
 ## Environment Variables
 
-| Variable          | Default       | Description               |
-|-------------------|---------------|---------------------------|
-| `APPLICATION_ENV` | `development` | App environment           |
-| `DB_DRIVER`       | `pdo_mysql`   | Doctrine driver           |
-| `DB_HOST`         | `mysql`       | Database host             |
-| `DB_PORT`         | `3306`        | Database port             |
-| `DB_USER`         |               | Database user             |
-| `DB_PASS`         |               | Database password         |
-| `DB_NAME`         |               | Database name             |
-| `DB_CHARSET`      | `utf8mb4`     | Connection charset        |
+| Variable          | Default       | Description        |
+| ----------------- | ------------- | ------------------ |
+| `APPLICATION_ENV` | `development` | App environment    |
+| `DB_DRIVER`       | `pdo_mysql`   | Doctrine driver    |
+| `DB_HOST`         | `mysql`       | Database host      |
+| `DB_PORT`         | `3306`        | Database port      |
+| `DB_USER`         |               | Database user      |
+| `DB_PASS`         |               | Database password  |
+| `DB_NAME`         |               | Database name      |
+| `DB_CHARSET`      | `utf8mb4`     | Connection charset |
 
 ## Debugging
 
